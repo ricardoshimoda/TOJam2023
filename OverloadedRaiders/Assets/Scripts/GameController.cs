@@ -52,29 +52,58 @@ public class GameController : MonoBehaviour
 
     private void spawnEnemy()
     {
+        var currentEnemy = Instantiate(enemy, enemyRoot);
+        currentEnemy.transform.position = geenrateInitialPosition();
+        var enemyMovement = currentEnemy.GetComponent<EnemyMovement>();
+        enemyMovement.setPlayer(player);
+    }
+
+    private Vector3 geenrateInitialPosition() {
         /* generate a random position */
         float randX;
         float randY;
-        if(Random.value < 0.5f)
+        float limit = 0.125f;
+        float quadrant = Random.value;
+        if (quadrant < limit)
         {
             randX = Random.Range(-1.0f, -0.1f);
-        } else
+            randY = Random.Range(-1.0f, -0.1f);
+        }
+        else if (quadrant < (2 * limit))
+        {
+            randX = Random.Range(-1.0f, -0.1f);
+            randY = Random.Range(0.0f, 1.0f);
+        }
+        else if (quadrant < (3 * limit))
+        {
+            randX = Random.Range(-1.0f, -0.1f);
+            randY = Random.Range(1.1f, 2.0f);
+        }
+        else if (quadrant < (4 * limit))
+        {
+            randX = Random.Range(0.0f, 1.0f);
+            randY = Random.Range(1.1f, 2.0f);
+        }
+        else if (quadrant < (5 * limit))
         {
             randX = Random.Range(1.1f, 2.0f);
+            randY = Random.Range(1.1f, 2.0f);
         }
-        if (Random.value < 0.5f)
+        else if (quadrant < (6 * limit))
         {
+            randX = Random.Range(1.1f, 2.0f);
+            randY = Random.Range(0.0f, 1.0f);
+        }
+        else if (quadrant < (7 * limit))
+        {
+            randX = Random.Range(1.1f, 2.0f);
             randY = Random.Range(-1.0f, -0.1f);
         }
         else
         {
-            randY = Random.Range(1.0f, 2.0f);
+            randX = Random.Range(0.0f, 1.0f);
+            randY = Random.Range(-1.0f, -0.1f);
         }
-        var initialPosition = Camera.main.ViewportToWorldPoint(new Vector3(randX, randY, Camera.main.nearClipPlane));
-        var currentEnemy = Instantiate(enemy, enemyRoot);
-        currentEnemy.transform.position = initialPosition;
-        var enemyMovement = currentEnemy.GetComponent<EnemyMovement>();
-        enemyMovement.setPlayer(player);
-
+        return Camera.main.ViewportToWorldPoint(new Vector3(randX, randY, Camera.main.nearClipPlane));
     }
 }

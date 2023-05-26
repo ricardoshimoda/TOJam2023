@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float basicSpeed;
@@ -29,5 +30,10 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Triggered");
+        Destroy(this.gameObject);
+    }
 
 }
