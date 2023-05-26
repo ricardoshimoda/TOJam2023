@@ -23,7 +23,11 @@ public class EnemyMovement : MonoBehaviour
         // calculates the vector between the enemy and the player
         if (player != null)
         {
-
+            var pursuit = player.transform.position - this.transform.position;
+            var speed = pursuit.normalized * Time.deltaTime * basicSpeed;
+            this.transform.position += speed;
         }
     }
+
+
 }
