@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] public int weapon;
     [SerializeField] Camera currentCamera;
     [SerializeField] GameObject bullet;
-    [SerializeField] GameObject bulletAnchor;
+    [SerializeField] Transform bulletAnchor;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         if (weapon == 1 && Input.GetButtonDown("Fire1"))
         {
             GameObject currentBullet = Instantiate(bullet, this.transform);
-            BulletMovement bMove = currentBullet.GetComponent<BulletMovement>();
+            currentBullet.transform.SetParent(bulletAnchor);
         }
     }
 }

@@ -18,10 +18,10 @@ public class BulletMovement : MonoBehaviour
     void Update()
     {
         this.transform.position += direction * speed * Time.deltaTime;
-        Vector3 pos = Camera.main.WorldToViewportPoint(this.transform.position);
-        if (pos.x < 0.0 || pos.x > 1.0 || pos.y < 0.0 || pos.y > 1.0)
+        Vector3 pos = Camera.main.WorldToViewportPoint(this.transform.position, Camera.MonoOrStereoscopicEye.Mono);
+        if (pos.x < -1.0 || pos.x > 2.0 || pos.y < -1.0 || pos.y > 2.0)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
 
     }
