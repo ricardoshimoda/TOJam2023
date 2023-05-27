@@ -11,6 +11,7 @@ public class BulletMovement : MonoBehaviour
     void Start()
     {
         var mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePoint.z = 0;
         direction = (mousePoint - this.transform.position).normalized;
     }
 

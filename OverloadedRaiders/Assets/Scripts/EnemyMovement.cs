@@ -7,9 +7,12 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] float basicSpeed;
     [SerializeField] GameObject player;
+    [SerializeField] GameObject powerUp;
+    [SerializeField] Transform powerUpRoot;
 
-    public void setPlayer(GameObject setPlayer) {
+    public void setBasicInfo(GameObject setPlayer, GameObject setPowerUpRoot) {
         player = setPlayer;
+        //powerUpRoot = setPowerUpRoot;
     }
 
     // Start is called before the first frame update
@@ -32,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Triggered");
+        //Instantiate(powerUp, powerUpRoot);
         Destroy(this.gameObject);
     }
 

@@ -53,12 +53,12 @@ public class GameController : MonoBehaviour
     private void spawnEnemy()
     {
         var currentEnemy = Instantiate(enemy, enemyRoot);
-        currentEnemy.transform.position = geenrateInitialPosition();
+        currentEnemy.transform.position = generateInitialPosition();
         var enemyMovement = currentEnemy.GetComponent<EnemyMovement>();
-        enemyMovement.setPlayer(player);
+        enemyMovement.setBasicInfo(player, null);
     }
 
-    private Vector3 geenrateInitialPosition() {
+    private Vector3 generateInitialPosition() {
         /* generate a random position */
         float randX;
         float randY;
