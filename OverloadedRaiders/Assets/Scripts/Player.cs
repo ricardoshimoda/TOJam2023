@@ -10,6 +10,12 @@ public class Player : MonoBehaviour
     [SerializeField] Camera currentCamera;
     [SerializeField] GameObject bullet;
     [SerializeField] Transform bulletAnchor;
+    [SerializeField] public int powerUps;
+    [SerializeField] public int invencibilityTimeMS;
+    [SerializeField] public bool gotToPortal;
+
+    bool invencibility = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,4 +57,31 @@ public class Player : MonoBehaviour
             currentBullet.transform.SetParent(bulletAnchor);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log(collision.tag);
+        if(collision.tag == "Enemy" && !invencibility)
+        {
+            invencibility = true;
+            StartCoroutine("EndInvencibility");
+            var enemyData = collision.GetComponent<EnemyMovement>();
+            health -= enemyData.damage;
+        } else if (collision.tag == "PowerUp")
+        {
+            powerUps++;
+        } else if (collision.tag == "Portal")
+        {
+            // End of level!
+            gotToPortal = true;
+        }
+
+    }
+
+    private IEnumerator EndInvencibility() {
+        yield return new WaitForSeconds(invencibilityTimeMS / 1000);
+        invencibility = false;
+    }
+
+
 }

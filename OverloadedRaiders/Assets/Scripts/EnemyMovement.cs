@@ -9,10 +9,11 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject powerUp;
     [SerializeField] Transform powerUpRoot;
+    [SerializeField] public float damage;
 
-    public void setBasicInfo(GameObject setPlayer, GameObject setPowerUpRoot) {
+    public void setBasicInfo(GameObject setPlayer, Transform setPowerUpRoot) {
         player = setPlayer;
-        //powerUpRoot = setPowerUpRoot;
+        powerUpRoot = setPowerUpRoot;
     }
 
     // Start is called before the first frame update
@@ -35,7 +36,8 @@ public class EnemyMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //Instantiate(powerUp, powerUpRoot);
+        var powerUpGO = Instantiate(powerUp, powerUpRoot);
+        powerUpGO.transform.position = this.transform.position;
         Destroy(this.gameObject);
     }
 

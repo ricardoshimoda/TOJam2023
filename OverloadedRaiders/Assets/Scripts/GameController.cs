@@ -7,10 +7,14 @@ public class GameController : MonoBehaviour
     [SerializeField] int gameState;
     [SerializeField] GameObject pnlStart;
     [SerializeField] GameObject pnlGame;
+    [SerializeField] GameObject pnlLevelTransition;
+    [SerializeField] GameObject pnlDeath;
     [SerializeField] float spawnTimeMS;
     [SerializeField] GameObject enemy;
     [SerializeField] GameObject player;
     [SerializeField] Transform enemyRoot;
+    [SerializeField] Transform powerUpRoot;
+    [SerializeField] public int powerUpGoal;
 
     float currentTime = 0;
 
@@ -21,6 +25,7 @@ public class GameController : MonoBehaviour
         {
             spawnTimeMS = 500;
         }
+        changeState(1);
     }
 
     // Update is called once per frame
@@ -32,6 +37,11 @@ public class GameController : MonoBehaviour
             currentTime -= spawnTimeMS;
             spawnEnemy();
         }
+        var playerData = player.GetComponent<Player>();
+        if(playerData.health <= 0)
+        {
+            changeState(3);
+        }
     }
 
     public void changeState(int state)
@@ -42,11 +52,28 @@ public class GameController : MonoBehaviour
             case 0:
                 pnlStart.SetActive(true);
                 pnlGame.SetActive(false);
+                pnlLevelTransition.SetActive(false);
+                pnlDeath.SetActive(false);
                 break;
             case 1:
                 pnlStart.SetActive(false);
                 pnlGame.SetActive(true);
+                pnlLevelTransition.SetActive(false);
+                pnlDeath.SetActive(false);
                 break;
+            case 2:
+                pnlStart.SetActive(false);
+                pnlGame.SetActive(false);
+                pnlLevelTransition.SetActive(true);
+                pnlDeath.SetActive(false);
+                break;
+            case 3:
+                pnlStart.SetActive(false);
+                pnlGame.SetActive(false);
+                pnlLevelTransition.SetActive(false);
+                pnlDeath.SetActive(true);
+                break;
+
         }
     }
 
@@ -55,7 +82,7 @@ public class GameController : MonoBehaviour
         var currentEnemy = Instantiate(enemy, enemyRoot);
         currentEnemy.transform.position = generateInitialPosition();
         var enemyMovement = currentEnemy.GetComponent<EnemyMovement>();
-        enemyMovement.setBasicInfo(player, null);
+        enemyMovement.setBasicInfo(player, powerUpRoot);
     }
 
     private Vector3 generateInitialPosition() {
