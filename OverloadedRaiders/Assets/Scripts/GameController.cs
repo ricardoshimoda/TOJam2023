@@ -126,6 +126,7 @@ public class GameController : MonoBehaviour
         playerData.interactive = true;
         playerData.health = 100;
         playerData.powerUps = 0;
+        playerData.currentWeapon = 0;
         player.transform.position = playerRoot.position;
     }
 
