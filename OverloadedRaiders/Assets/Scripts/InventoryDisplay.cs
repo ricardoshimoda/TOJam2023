@@ -17,7 +17,7 @@ public class InventoryDisplay : MonoBehaviour
     {
         for(int i = 0; i <4; i++)
         {
-            if(i < (player.currentWeapon - 1))
+            if(i < player.currentWeapon)
             {
                 gallery[i].SetActive(true);
             } else
@@ -25,5 +25,10 @@ public class InventoryDisplay : MonoBehaviour
                 gallery[i].SetActive(false);
             }
         }
+        if (player.powerUps > 40)
+        {
+            gallery[3].SetActive(true);
+        }
+
     }
 }

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 236096883876341410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 6.55, z: 0}
-  m_LocalScale: {x: 5.225, y: 1, z: 1}
+  m_LocalScale: {x: 5.225, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1095730197101228163}
@@ -120,7 +120,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236096883876341410}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -161,7 +161,7 @@ Transform:
   m_GameObject: {fileID: 494820187163429543}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -2.133, z: 0}
-  m_LocalScale: {x: 5.249999, y: 4, z: 1}
+  m_LocalScale: {x: 5.249999, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1117105822951385074}
@@ -294,7 +294,7 @@ Transform:
   m_GameObject: {fileID: 702113873951893215}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.44, y: 3.07, z: 0}
-  m_LocalScale: {x: 1, y: 5.45, z: 1}
+  m_LocalScale: {x: 2, y: 5.45, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1095730197101228163}
@@ -386,7 +386,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702113873951893215}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -427,7 +427,7 @@ Transform:
   m_GameObject: {fileID: 982893209810464781}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.79, y: 2.89, z: 0}
-  m_LocalScale: {x: 2, y: 5.8625317, z: 1}
+  m_LocalScale: {x: 3, y: 5.8625317, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8262187059260028144}
@@ -560,7 +560,7 @@ Transform:
   m_GameObject: {fileID: 1155124083796494571}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 7.02, z: 0}
-  m_LocalScale: {x: 5.2249985, y: 2, z: 1}
+  m_LocalScale: {x: 5.2249985, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8262187059260028144}
@@ -693,7 +693,7 @@ Transform:
   m_GameObject: {fileID: 1826701746698225746}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.78, y: 2.89, z: 0}
-  m_LocalScale: {x: 4, y: 5.8625317, z: 1}
+  m_LocalScale: {x: 5, y: 5.8625317, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1117105822951385074}
@@ -826,7 +826,7 @@ Transform:
   m_GameObject: {fileID: 1924966811515455781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.63, z: 0}
-  m_LocalScale: {x: 5.25, y: 1, z: 1}
+  m_LocalScale: {x: 5.25, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1095730197101228163}
@@ -918,7 +918,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924966811515455781}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -959,7 +959,7 @@ Transform:
   m_GameObject: {fileID: 2244831399813604462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 8.013, z: 0}
-  m_LocalScale: {x: 5.2249985, y: 4, z: 1}
+  m_LocalScale: {x: 5.2249985, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1117105822951385074}
@@ -1073,7 +1073,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1095730197101228163}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Punch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1127,7 +1127,7 @@ Transform:
   m_GameObject: {fileID: 2756703551889571381}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.925, y: 3.106, z: 0}
-  m_LocalScale: {x: 4, y: 5.449999, z: 1}
+  m_LocalScale: {x: 5, y: 5.449999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1117105822951385074}
@@ -1260,7 +1260,7 @@ Transform:
   m_GameObject: {fileID: 3817769593970995272}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.93, y: 3.0699992, z: 0}
-  m_LocalScale: {x: 2, y: 5.449999, z: 1}
+  m_LocalScale: {x: 3, y: 5.449999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8262187059260028144}
@@ -1374,7 +1374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1117105822951385074}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1428,7 +1428,7 @@ Transform:
   m_GameObject: {fileID: 5044465881505342109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.37, y: 3.01, z: 0}
-  m_LocalScale: {x: 1, y: 5.8625, z: 1}
+  m_LocalScale: {x: 2, y: 5.8625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1095730197101228163}
@@ -1494,7 +1494,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5044465881505342109}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1542,7 +1542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8262187059260028144}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1577,7 +1577,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1061181918245137216}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: SlashRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1627,7 +1627,7 @@ Transform:
   m_GameObject: {fileID: 7402082182612124979}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1.14, z: 0}
-  m_LocalScale: {x: 5.249999, y: 2, z: 1}
+  m_LocalScale: {x: 5.249999, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8262187059260028144}
@@ -1864,7 +1864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicSpeed: 3
   health: 100
-  currentWeapon: 1
+  currentWeapon: 2
   bullet: {fileID: 9022980079817398146, guid: 2ff4c7810e30f7e499d38e6e2ad69be4, type: 3}
   bulletAnchor: {fileID: 0}
   powerUps: 0
@@ -1875,7 +1875,7 @@ MonoBehaviour:
   - {fileID: 2338478280335538908}
   - {fileID: 5198834401041599821}
   - {fileID: 4744933239337192876}
-  meleeDurationMS: f4010000e8030000d0070000
+  meleeDurationMS: e8030000d0070000b80b0000
   meleeSize:
   - 0.6
   - 1

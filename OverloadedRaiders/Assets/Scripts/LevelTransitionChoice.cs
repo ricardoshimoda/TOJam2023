@@ -19,7 +19,7 @@ public class LevelTransitionChoice : MonoBehaviour
         
     }
 
-    void OnFirstTransition() {
+    public void OnFirstTransition() {
         secondTransitionPanel.SetActive(true);
         firstTransitionPanel.SetActive(false);
     }
