@@ -103,7 +103,7 @@ MonoBehaviour:
   player: {fileID: 0}
   powerUp: {fileID: 6721538603863759848, guid: 617fa471297e85743b6eccd3b55cee22, type: 3}
   powerUpRoot: {fileID: 0}
-  damage: 100
+  damage: 10
 --- !u!95 &5669291201877107730
 Animator:
   serializedVersion: 4
