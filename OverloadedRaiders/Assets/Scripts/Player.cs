@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField] public int powerUps;
     [SerializeField] public int invencibilityTimeMS;
     [SerializeField] public bool gotToPortal = false;
+    [SerializeField] GameObject punch;
+    [SerializeField] GameObject knife;
+    [SerializeField] GameObject sword;
 
     bool invencibility = false;
     public bool interactive = false;
@@ -35,6 +38,12 @@ public class Player : MonoBehaviour
         if(health <= 0 || gotToPortal)
         {
             playerAnimator.SetBool("IsMoving", false);
+            if(health <= 0)
+            {
+                playerAnimator.speed = 0;
+                var renderer = GetComponent<SpriteRenderer>();
+                renderer.color = Color.clear;
+            }
         }
     }
 
@@ -57,11 +66,27 @@ public class Player : MonoBehaviour
     }
 
     private void fire() {
-        if (currentWeapon == 1 && Input.GetButtonDown("Fire1"))
-        {
-            GameObject currentBullet = Instantiate(bullet, this.transform);
-            currentBullet.transform.SetParent(bulletAnchor);
+        if (Input.GetButtonDown("Fire1")) {
+            switch(currentWeapon)
+            {
+                case 0:
+                    // punch
+                    
+                    break;
+                case 1:
+                    // knife
+                    break;
+                case 2:
+                    // sword
+                    break;
+                case 3:
+                    // pistol
+                    GameObject currentBullet = Instantiate(bullet, this.transform);
+                    currentBullet.transform.SetParent(bulletAnchor);
+                    break;
+            }
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

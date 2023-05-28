@@ -83,10 +83,7 @@ public class GameController : MonoBehaviour
                 pnlLevelTransition.SetActive(false);
                 pnlDeath.SetActive(false);
                 portalShown = false;
-                playerData.interactive = true;
-                playerData.health = 100;
-                playerData.powerUps = 0;
-                player.transform.position = playerRoot.position;
+                restorePlayer();
                 foreach (Transform child in enemyRoot)
                 {
                     GameObject.Destroy(child.gameObject);
@@ -121,6 +118,20 @@ public class GameController : MonoBehaviour
                 break;
 
         }
+    }
+
+    private void restorePlayer() {
+        var playerAnimator = player.GetComponent<Animator>();
+        playerAnimator.speed = 1;
+
+        var renderer = player.GetComponent<SpriteRenderer>();
+        renderer.color = Color.white;
+
+        var playerData = player.GetComponent<Player>();
+        playerData.interactive = true;
+        playerData.health = 100;
+        playerData.powerUps = 0;
+        player.transform.position = playerRoot.position;
     }
 
     private void spawnPortal() {
