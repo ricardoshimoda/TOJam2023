@@ -62,6 +62,11 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void OnApplicationQuit()
+    {
+        Application.Quit();
+    }
+
     public void changeState(int state)
     {
         gameState = state;
