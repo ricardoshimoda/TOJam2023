@@ -150,7 +150,7 @@ public class GameController : MonoBehaviour
 
     private void spawnPortal() {
         var randomChildIndex = Random.Range(0, portalSpawnRoot.childCount-1);
-        Instantiate(portal, portalSpawnRoot.GetChild(randomChildIndex));
+        renderedPortal = Instantiate(portal, portalSpawnRoot.GetChild(randomChildIndex));
     }
 
     private void spawnEnemy()
