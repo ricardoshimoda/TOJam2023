@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject pnlGame;
     [SerializeField] GameObject pnlLevelTransition;
     [SerializeField] GameObject pnlDeath;
+    [SerializeField] GameObject pnlMoreToCome;
     [SerializeField] float[] spawnTimeMS;
     [SerializeField] GameObject enemy;
     [SerializeField] GameObject player;
@@ -71,6 +72,7 @@ public class GameController : MonoBehaviour
                 pnlGame.SetActive(false);
                 pnlLevelTransition.SetActive(false);
                 pnlDeath.SetActive(false);
+                pnlMoreToCome.SetActive(false);
                 playerData.interactive = false;
                 break;
             case 1:
@@ -78,6 +80,7 @@ public class GameController : MonoBehaviour
                 pnlGame.SetActive(true);
                 pnlLevelTransition.SetActive(false);
                 pnlDeath.SetActive(false);
+                pnlMoreToCome.SetActive(false);
                 portalShown = false;
                 restorePlayer();
                 foreach (Transform child in enemyRoot)
@@ -98,6 +101,7 @@ public class GameController : MonoBehaviour
                 pnlGame.SetActive(false);
                 pnlLevelTransition.SetActive(true);
                 pnlDeath.SetActive(false);
+                pnlMoreToCome.SetActive(false);
                 // all enemies are defeated at once!
                 foreach (Transform child in enemyRoot)
                 {
@@ -110,6 +114,15 @@ public class GameController : MonoBehaviour
                 pnlGame.SetActive(false);
                 pnlLevelTransition.SetActive(false);
                 pnlDeath.SetActive(true);
+                pnlMoreToCome.SetActive(false);
+                playerData.interactive = false;
+                break;
+            case 4:
+                pnlStart.SetActive(false);
+                pnlGame.SetActive(false);
+                pnlLevelTransition.SetActive(false);
+                pnlDeath.SetActive(false);
+                pnlMoreToCome.SetActive(true);
                 playerData.interactive = false;
                 break;
 
