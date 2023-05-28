@@ -32,6 +32,10 @@ public class Player : MonoBehaviour
             movement();
             fire();
         }
+        if(health <= 0 || gotToPortal)
+        {
+            playerAnimator.SetBool("IsMoving", false);
+        }
     }
 
     private void movement() {
