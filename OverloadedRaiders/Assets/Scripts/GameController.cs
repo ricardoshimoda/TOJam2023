@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Transform playerRoot;
     [SerializeField] GameObject portal;
     [SerializeField] bool portalShown = false;
-    [SerializeField] Transform enemySpawnRoot;
+    [SerializeField] Transform portalSpawnRoot;
 
     float currentTime = 0;
     GameObject renderedPortal;
@@ -55,7 +55,11 @@ public class GameController : MonoBehaviour
             if(playerData.powerUps >= powerUpGoal && !portalShown)
             {
                 portalShown = true;
-
+                spawnPortal();
+            }
+            if(portalShown && playerData.gotToPortal)
+            {
+                changeState(2);
             }
         }
     }
@@ -117,6 +121,11 @@ public class GameController : MonoBehaviour
                 break;
 
         }
+    }
+
+    private void spawnPortal() {
+        var randomChildIndex = Random.Range(0, portalSpawnRoot.childCount-1);
+        Instantiate(portal, portalSpawnRoot.GetChild(randomChildIndex));
     }
 
     private void spawnEnemy()

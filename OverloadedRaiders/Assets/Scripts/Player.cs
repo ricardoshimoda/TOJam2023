@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform bulletAnchor;
     [SerializeField] public int powerUps;
     [SerializeField] public int invencibilityTimeMS;
-    [SerializeField] public bool gotToPortal;
+    [SerializeField] public bool gotToPortal = false;
 
     bool invencibility = false;
     public bool interactive = false;
