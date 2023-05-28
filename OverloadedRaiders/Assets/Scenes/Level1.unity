@@ -6830,7 +6830,11 @@ MonoBehaviour:
   pnlGame: {fileID: 680106104}
   pnlLevelTransition: {fileID: 1440602112}
   pnlDeath: {fileID: 1145548077}
-  spawnTimeMS: 1000
+  spawnTimeMS:
+  - 2000
+  - 1500
+  - 1000
+  - 500
   enemy: {fileID: 1548470550990671094, guid: 1a9068a443de9104ba04233fd07ed373, type: 3}
   player: {fileID: 134070544}
   enemyRoot: {fileID: 500791828}

@@ -13,14 +13,18 @@ public class Player : MonoBehaviour
     [SerializeField] public int powerUps;
     [SerializeField] public int invencibilityTimeMS;
     [SerializeField] public bool gotToPortal = false;
-    [SerializeField] GameObject punch;
-    [SerializeField] GameObject knife;
-    [SerializeField] GameObject sword;
+    [SerializeField] GameObject slash;
+    [SerializeField] GameObject[] meleeHitBox;
+    [SerializeField] int[] meleeDurationMS;
+    [SerializeField] float[] meleeSize;
+    [SerializeField] GameObject slashRoot;
+
 
     bool invencibility = false;
     public bool interactive = false;
     Animator playerAnimator;
     bool facingRight = true;
+    GameObject meleeSlash;
 
     // Start is called before the first frame update
     void Start()
@@ -70,23 +74,36 @@ public class Player : MonoBehaviour
             switch(currentWeapon)
             {
                 case 0:
-                    // punch
-                    
-                    break;
                 case 1:
-                    // knife
-                    break;
                 case 2:
-                    // sword
+                    meleeHitBox[currentWeapon].SetActive(true);
+                    meleeSlash = Instantiate(slash, slashRoot.transform);
+                    meleeSlash.transform.localScale = new Vector3(meleeSize[currentWeapon], meleeSize[currentWeapon], 1);
+                    StartCoroutine("disableMelee");
                     break;
                 case 3:
                     // pistol
-                    GameObject currentBullet = Instantiate(bullet, this.transform);
+                    GameObject currentBullet = Instantiate(bullet, slashRoot.transform);
                     currentBullet.transform.SetParent(bulletAnchor);
                     break;
             }
         }
+    }
 
+    private IEnumerator disableMelee() {
+        var currentTimerMS = 0;
+        GameObject currentGameObject = null;
+        switch (currentWeapon)
+        {
+            case 0:
+            case 1:
+            case 2:
+                currentTimerMS = meleeDurationMS[currentWeapon];
+                currentGameObject = meleeHitBox[currentWeapon];
+                break;
+        }
+        yield return new WaitForSeconds(currentTimerMS / 1000);
+        currentGameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -101,7 +118,20 @@ public class Player : MonoBehaviour
         } else if (collision.tag == "PowerUp")
         {
             powerUps++;
-        } else if (collision.tag == "Portal")
+            if (powerUps >= 10 && powerUps < 20)
+            {
+                currentWeapon = 1;
+            }
+            else if (powerUps >= 20 && powerUps < 30)
+            {
+                currentWeapon = 2;
+            }
+            if (powerUps >= 30 && powerUps < 40)
+            {
+                currentWeapon = 3;
+            }
+        }
+        else if (collision.tag == "Portal")
         {
             // End of level!
             gotToPortal = true;

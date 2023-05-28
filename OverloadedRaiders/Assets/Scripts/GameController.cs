@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject pnlGame;
     [SerializeField] GameObject pnlLevelTransition;
     [SerializeField] GameObject pnlDeath;
-    [SerializeField] float spawnTimeMS;
+    [SerializeField] float[] spawnTimeMS;
     [SerializeField] GameObject enemy;
     [SerializeField] GameObject player;
     [SerializeField] Transform enemyRoot;
@@ -29,10 +29,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
         playerData = player.GetComponent<Player>();
-        if (spawnTimeMS <= 0)
-        {
-            spawnTimeMS = 500;
-        }
         changeState(0);
     }
 
@@ -41,10 +37,11 @@ public class GameController : MonoBehaviour
     {
         if(gameState == 1)
         {
+            var currentSpawnTimeMS = spawnTimeMS[playerData.currentWeapon];
             currentTime += Time.deltaTime * 1000;
-            if (currentTime > spawnTimeMS)
+            if (currentTime > currentSpawnTimeMS)
             {
-                currentTime -= spawnTimeMS;
+                currentTime -= currentSpawnTimeMS;
                 spawnEnemy();
             }
             if(playerData.health <= 0)
@@ -66,7 +63,6 @@ public class GameController : MonoBehaviour
 
     public void changeState(int state)
     {
-        var playerData = player.GetComponent<Player>();
         gameState = state;
         switch (gameState)
         {
@@ -127,7 +123,6 @@ public class GameController : MonoBehaviour
         var renderer = player.GetComponent<SpriteRenderer>();
         renderer.color = Color.white;
 
-        var playerData = player.GetComponent<Player>();
         playerData.interactive = true;
         playerData.health = 100;
         playerData.powerUps = 0;
