@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DeathMenu : MonoBehaviour
 {
+    [SerializeField] GameController controller;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +19,11 @@ public class DeathMenu : MonoBehaviour
     }
 
     public void OnRestartLevel() {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        controller.changeState(1);
     }
 
     public void OnMainMenu() {
-
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }

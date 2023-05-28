@@ -15,37 +15,54 @@ public class GameController : MonoBehaviour
     [SerializeField] Transform enemyRoot;
     [SerializeField] Transform powerUpRoot;
     [SerializeField] public int powerUpGoal;
+    [SerializeField] Transform playerRoot;
+    [SerializeField] GameObject portal;
+    [SerializeField] bool portalShown = false;
+    [SerializeField] Transform enemySpawnRoot;
 
     float currentTime = 0;
+    GameObject renderedPortal;
+
+    Player playerData;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerData = player.GetComponent<Player>();
         if (spawnTimeMS <= 0)
         {
             spawnTimeMS = 500;
         }
-        changeState(1);
+        changeState(0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime * 1000;
-        if(currentTime > spawnTimeMS && gameState == 1)
+        if(gameState == 1)
         {
-            currentTime -= spawnTimeMS;
-            spawnEnemy();
-        }
-        var playerData = player.GetComponent<Player>();
-        if(playerData.health <= 0)
-        {
-            changeState(3);
+            currentTime += Time.deltaTime * 1000;
+            if (currentTime > spawnTimeMS)
+            {
+                currentTime -= spawnTimeMS;
+                spawnEnemy();
+            }
+            if(playerData.health <= 0)
+            {
+                changeState(3);
+                return;
+            }
+            if(playerData.powerUps >= powerUpGoal && !portalShown)
+            {
+                portalShown = true;
+
+            }
         }
     }
 
     public void changeState(int state)
     {
+        var playerData = player.GetComponent<Player>();
         gameState = state;
         switch (gameState)
         {
@@ -54,24 +71,49 @@ public class GameController : MonoBehaviour
                 pnlGame.SetActive(false);
                 pnlLevelTransition.SetActive(false);
                 pnlDeath.SetActive(false);
+                playerData.interactive = false;
                 break;
             case 1:
                 pnlStart.SetActive(false);
                 pnlGame.SetActive(true);
                 pnlLevelTransition.SetActive(false);
                 pnlDeath.SetActive(false);
+                portalShown = false;
+                playerData.interactive = true;
+                playerData.health = 100;
+                playerData.powerUps = 0;
+                player.transform.position = playerRoot.position;
+                foreach (Transform child in enemyRoot)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+                foreach (Transform child in powerUpRoot)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+                if(renderedPortal != null)
+                {
+                    Destroy(renderedPortal);
+                }
                 break;
             case 2:
                 pnlStart.SetActive(false);
                 pnlGame.SetActive(false);
                 pnlLevelTransition.SetActive(true);
                 pnlDeath.SetActive(false);
+                // all enemies are defeated at once!
+                foreach (Transform child in enemyRoot)
+                {
+                    GameObject.Destroy(child.gameObject);
+                }
+                playerData.interactive = false;
                 break;
             case 3:
                 pnlStart.SetActive(false);
                 pnlGame.SetActive(false);
                 pnlLevelTransition.SetActive(false);
                 pnlDeath.SetActive(true);
+                playerData.interactive = false;
                 break;
 
         }

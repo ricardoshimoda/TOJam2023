@@ -16,6 +16,11 @@ public class EnemyMovement : MonoBehaviour
         powerUpRoot = setPowerUpRoot;
     }
 
+    public void stop()
+    {
+        basicSpeed = 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

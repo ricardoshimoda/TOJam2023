@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class Welcome : MonoBehaviour
 {
-    [SerializeField] GameObject homePanel;
+    [SerializeField] GameController controller;
     public void onClick() {
-        homePanel.SetActive(false);
+        controller.changeState(1);
+
     }
 }
